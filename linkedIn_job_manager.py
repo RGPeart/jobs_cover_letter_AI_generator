@@ -192,9 +192,11 @@ class LinkedInJobManager:
         easy_apply_url = "&f_LF=f_AL"
         return f"{distance_url}&{remote_url}&{job_types_url}&{experience_url}{easy_apply_url}{date_url}"
 
+    
     def next_job_page(self, position, location, job_page):
         self.driver.get(f"https://www.linkedin.com/jobs/search/{self.base_search_url}&keywords={position}{location}&start={job_page * 25}")
     
+        
     def extract_job_information_from_tile(self, job_tile):
         job_title, company, job_location, apply_method, link = "", "", "", "", ""
         try:

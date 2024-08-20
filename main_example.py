@@ -1,17 +1,16 @@
 import re
 from pathlib import Path
 import yaml
-#from selenium import webdriver
-#from selenium.webdriver.chrome.service import Service as ChromeService
-#from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 import click
 
-#from utils import chromeBrowserOptions
+from utils import chromeBrowserOptions
 from gpt import GPTAnswerer
-#from linkedIn_authenticator import LinkedInAuthenticator
-#from linkedIn_bot_facade import LinkedInBotFacade
-#from linkedIn_job_manager import LinkedInJobManager
-from otta_job_scraper import OttaJobScraper
+from linkedIn_authenticator import LinkedInAuthenticator
+from linkedIn_bot_facade import LinkedInBotFacade
+from linkedIn_job_manager import LinkedInJobManager
 from resume import Resume
 
 class ConfigError(Exception):
@@ -161,7 +160,7 @@ class FileManager:
             result['resume'] = resume_file
         
         return result
-'''
+
 def init_browser():
     try:
         options = chromeBrowserOptions()
@@ -169,10 +168,10 @@ def init_browser():
         return webdriver.Chrome(service=service, options=options)
     except Exception as e:
         raise RuntimeError(f"Failed to initialize browser: {str(e)}")
-'''
+
         
 # Commented out bot code. Don't want to execute automate job applications
-'''
+
 def create_and_run_bot(email: str, password: str, parameters: dict, openai_api_key: str):
     try:
         browser = init_browser()
@@ -193,26 +192,6 @@ def create_and_run_bot(email: str, password: str, parameters: dict, openai_api_k
         bot.start_apply()
     except Exception as e:
         raise RuntimeError(f"Error running the bot: {str(e)}")
-'''
-
-def generate_job_app_cover_letter(email: str, password: str, parameters: dict, openai_api_key: str):
-    url = input ("Please enter the URL link to the job application you are trying to apply for: ")
-
-    try:
-        job_description = OttaJobScraper(url)     
-        #gpt_answerer_component = GPTAnswerer(openai_api_key)
-        print(job_description)
-        '''
-        with open(parameters['uploads']['plainTextResume'], "r") as file:
-            plain_text_resume_file = file.read()
-        
-        #resume_object = Resume(plain_text_resume_file)
-        #bot.set_resume(resume_object)
-        bot.set_gpt_answerer(gpt_answerer_component)
-        bot.set_parameters(parameters)
-        '''
-    except Exception as e:
-        raise RuntimeError(f"Error running the bot: {str(e)}")
 
 @click.command()
 @click.option('--resume', type=click.Path(exists=True, file_okay=True, dir_okay=False, path_type=Path), help="Path to the resume PDF file")
@@ -225,8 +204,7 @@ def main(resume: Path = None):
         parameters['uploads'] = FileManager.file_paths_to_dict(resume, plain_text_resume_file)
         parameters['outputFileDirectory'] = output_folder
 
-        # create_and_run_bot(email, password, parameters, openai_api_key)
-        generate_job_app_cover_letter(email, password, parameters, openai_api_key)
+        create_and_run_bot(email, password, parameters, openai_api_key)
 
     except ConfigError as ce:
         print(f"Configuration error: {str(ce)}")

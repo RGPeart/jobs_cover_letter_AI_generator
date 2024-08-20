@@ -1,105 +1,161 @@
 {
   "personalInformation": {
-    "name": "[Your name]",
-    "surname": "[Your surname]",
-    "dateOfBirth": "[Your Date of Birth]",
-    "country": "[Your country]",
-    "city": "[Your city]",
-    "address": "[Your address]",
-    "phonePrefix": "[Your phone number prefix]",
-    "phone": "[Your phone number]",
-    "email": "[Your email]",
-    "github": "[Link]",
-    "linkedin": "[Link]"
+    "name": "Ryan",
+    "surname": "Peart",
+    "dateOfBirth": "05/22/1996",
+    "country": "United States",
+    "city": "New York",
+    "address": "200 West 70th Street, Apartment 11J, New York, NY 10023",
+    "phonePrefix": "+1",
+    "phone": "425-691-6095",
+    "email": "rgpeart@hotmail.com",
+    "github": "https://github.com/RGPeart",
+    "linkedin": "https://www.linkedin.com/in/ryan-peart/"
   },
+
   "selfIdentification": {
-    "gender": "[Specific gender identification]",
-    "pronouns": "[Your Pronouns]",
-    "veteran": "[Yes/No]",
-    "disability": "[Yes/No]",
-    "ethnicity": "[Specify ethnicity]"
+    "gender": "Male",
+    "pronouns": "He/Him",
+    "veteran": false,
+    "disability": false,
+    "ethnicity": "2 or more races"
   },
+
   "legalAuthorization": {
-    "euWorkAuthorization": "[Yes/No]",
-    "usWorkAuthorization": "[Yes/No]",
-    "requiresUsVisa": "[Yes/No]",
-    "legallyAllowedToWorkInUs": "[Yes/No]",
-    "requiresUsSponsorship": "[Yes/No]",
-    "requiresEuVisa": "[Yes/No]",
-    "legallyAllowedToWorkInEu": "[Yes/No]",
-    "requiresEuSponsorship": "[Yes/No]"
+    "euWorkAuthorization": false,
+    "usWorkAuthorization": true,
+    "requiresUsVisa": false,
+    "legallyAllowedToWorkInUs": true,
+    "requiresUsSponsorship": false,
+    "requiresEuVisa": true,
+    "legallyAllowedToWorkInEu": false,
+    "requiresEuSponsorship": true
   },
+
   "workPreferences": {
-    "remoteWork": "[Yes/No]",
-    "inPersonWork": "[Yes/No]",
-    "openToRelocation": "[Yes/No]",
-    "willingToCompleteAssessments": "[Yes/No]",
-    "willingToUndergoDrugTests": "[Yes/No]",
-    "willingToUndergoBackgroundChecks": "[Yes/No]"
+    "remoteWork": true,
+    "inPersonWork": true,
+    "openToRelocation": true,
+    "willingToCompleteAssessments": true,
+    "willingToUndergoDrugTests": true,
+    "willingToUndergoBackgroundChecks": true
   },
+
   "educationDetails": [
     {
-      "degree": "[Bachelor's/Master's/Ph.D.]",
-      "university": "[Name of University]",
-      "gpa": "[Your GPA]",
-      "graduationYear": "[Year of Graduation]",
-      "fieldOfStudy": "[Your Field of Study]",
+      "degree": "Bachelor's of Science",
+      "university": "University of Washington, Seattle",
+      "gpa": "3.4",
+      "graduationYear": "2019",
+      "fieldOfStudy": "Information Sciences",
       "skillsAcquired": {
-        "blockchain": "[Years]",
-        "iot": "[Years]",
-        "python": "[Years]"
+        #"skill": "years of experience",
+        "python": "2",
+        "SQL": "2",
+        "R": "2",
+        "JavaScript": "2",
+        "Tableau": "1",
+        "databaseManagement": "1",
+        "dataAnalysis": "1",
+        "dataVisualization": "1",
+        "dataScience": "1"
       }
     }
   ],
+
   "experienceDetails": [
     {
-      "position": "[Job Title]",
-      "company": "[Company Name]",
-      "employmentPeriod": "[Month, Year] - [Month, Year]",
-      "location": "[City, Country]",
-      "industry": "[Industry of the Company]",
+      "position": "Data Engineering Senior Analyst",
+      "company": "Accenture",
+      "employmentPeriod": "03,2022 - Present",
+      "location": "New York, United States",
+      "industry": "Technology Consulting",
       "keyResponsibilities": {
-        "responsibility1": "[Years]",
-        "responsibility2": "[Years]",
-        "responsibility3": "[Years]"
+        "responsibility1": "Developed and optimized ETL workflows using Azure DevOps and Apache Airflow to ensure the timely and accurate delivery of data to downstream systems.",
+        "responsibility2": "Applied expertise in data platform engineering to design and implement big data solutions using Snowflake and BigQuery for efficient and accurate data processing",
+        "responsibility3": "Collaborated with cross-functional teams to identify client needs, implement project plans, and deliver high-quality solutions to leadership on time and within budget.",
+        "responsibility4": "Utilized business analytics tools and techniques to perform data analysis and develop insights for clients in Insurance, Life Sciences, Retail, and Financial industries",
+        "responsibility5": "Led the Northeast market unit data engineering team for various projects while collaborating with teammates worldwide to drive continuous client service and success.",
+        "responsibility6": "Fostered mentorship programs amongst employees at Accenture and established connections to prestigious Universities in the Northeast to engage and introduce students and recent graduates to Accenture culture."
       },
       "skillsAcquired": {
-        "php": "[Years]",
-        "python": "[Years]",
-        "leadership": "[Years]",
-        "problemSolving": "[Years]",
-        "criticalThinking": "[Years]",
-        "adaptability": "[Years]",
-        "perfectionism": "[Years]"
+        #"skill": "years of experience",
+        "sql": "2",
+        "python": "1",
+        "snowflake": "1",
+        "airflow": "1",
+        "azure": "1",
+        "googleCloud": "1",
+        "azureDevOps": "1",
+        "bigQuery": "1",
+        "powerBI": "2",
+        "bigDataAnalytics": "2",
+        "bigDataEngineering": "2",
+        "dataVisualization": "3",
+        "productDevelopment": "2",
+        "requirementsAnalysis": "2",
+        "dataStrategy": "1",
+        "dataArchitecture": "1"
       }
-    }
+    }, 
+    {
+      "position": "Database Analyst",
+      "company": "Minerva Knowledge Management, LLC.",
+      "employmentPeriod": "10,2019 - 02,2022",
+      "location": "Seattle, United States",
+      "industry": "Technology Consulting",
+      "keyResponsibilities": {
+        "responsibility1": "Improved Product Development, Quality, and Sustaining Processes by implementing optimized, structured, and traceable systems and processes.",
+        "responsibility2": "Utilized client-facing skills to represent Minerva within the client's environment and drive discussions with senior personnel regarding client's user requirements, methodologies, risk mitigation, and updates for enhancement of applications.",
+        "responsibility3": "Built automated business workflows using APIs to integrate application data into other third-party platforms, such as Salesforce, SharePoint, and more.",
+        "responsibility4": "Instructed training sessions for hundreds of attendees to introduce and familiarize the use of QuickBase and PowerApps DBMS applications"
+      },
+      "skillsAcquired": {
+        #"skill": "years of experience",
+        "quickBase": "2",
+        "python": "1",
+        "leadership": "2",
+        "problemSolving": "2",
+        "criticalThinking": "2",
+        "agileMethodology": "2"
+      }
+    }, 
   ],
+
   "projects": {
-    "project1": "[Description of significant projects you've worked on + if available repo link]",
-    "project2": "[Description of significant projects you've worked on + if available repo link]"
+    "project1": "Designed a stock analysis tool to help identify undervalued stocks worth investing in. Developed Python script to scrape data, analyze, and rank stocks based on valuation methods, including P/E Ratio, PEG, ROIC, Momentum, and more.",
+    "project2": "Gathered TV shows, episodes, and cast lists from IMDB using Python, PostgreSQL, and Tableau to scrape, store, and visualize data. Answering questions like episode ratings heatmaps and successful vs. popular actors/actresses."
   },
+
   "availability": {
-    "noticePeriod": "[Specify notice period]"
+    "noticePeriod": "1 month"
   },
+
   "salaryExpectations": {
-    "salaryRangeUSD": "[Specify your salary expectations in USD]"
+    "salaryRangeUSD": "$115,000 to $150,000 USD"
   },
+
   "certifications": [
-    "[Certification 1]",
-    "[Certification 2]",
-    "[Certification 3]"
+    "Snowflake SnowPro Core Certification",
+    "Microsoft Azure Fundamentals Certification",
+    "Microsoft Azure Data Fundamentals Certification",
+    "QuickBase Expert Builder Certification"
   ],
+
   "languages": [
     {
-      "language": "Italian",
-      "proficiency": "Native"
-    },
-    {
       "language": "English",
-      "proficiency": "Professional"
+      "proficiency": "Native"
     }
   ],
+
   "interests": [
-    "[List any hobbies or interests relevant to your professional profile]"
+    "Exercising,
+     Cooking,
+     Dog-Sitting,
+     Travelling,
+     Photography,
+     ETL Pipeline Development, 
+     Machine Learning challenges"
   ]
 }
