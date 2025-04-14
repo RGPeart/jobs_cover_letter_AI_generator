@@ -96,7 +96,7 @@ def generate(role_title, company_name, company_description, role_requirements_li
 
 def main():
     # Prompt the user for a URL
-    url = input("Please enter a valid Job Application URL: ")
+    url = input("Please enter a valid Welcome to the Jungle (Formerly Otta) Job Application URL: ")
     
     # Call the scrape_data function with the user-provided URL
     role_title, company_name, company_description, role_requirements_list, role_details_list = scrape_job_application_data(url)

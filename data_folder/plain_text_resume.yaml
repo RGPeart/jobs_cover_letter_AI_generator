@@ -65,7 +65,7 @@
 
   "experienceDetails": [
     {
-      "position": "Data Engineering Senior Analyst",
+      "position": "Data Engineering Consultant",
       "company": "Accenture",
       "employmentPeriod": "03,2022 - Present",
       "location": "New York, United States",
@@ -80,17 +80,17 @@
       },
       "skillsAcquired": {
         #"skill": "years of experience",
-        "sql": "2",
-        "python": "1",
+        "sql": "3",
+        "python": "2",
         "snowflake": "1",
         "airflow": "1",
-        "azure": "1",
+        "azure": "2",
         "googleCloud": "1",
-        "azureDevOps": "1",
+        "azureDevOps": "2",
         "bigQuery": "1",
         "powerBI": "2",
-        "bigDataAnalytics": "2",
-        "bigDataEngineering": "2",
+        "bigDataAnalytics": "3",
+        "bigDataEngineering": "3",
         "dataVisualization": "3",
         "productDevelopment": "2",
         "requirementsAnalysis": "2",
