@@ -1,4 +1,3 @@
-import chromedriver_autoinstaller
 from bs4 import BeautifulSoup
 import requests
 import os 
@@ -11,63 +10,53 @@ def load_resume(file_path):
 
 def scrape_job_application_data(url):
     try:
+        job_id = url.split('/')[5]
+        linkedIn_api_url = f"https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{job_id}/"
+        
         # Make a GET request to fetch the page content
-        response = requests.get(url)
+        response = requests.get(linkedIn_api_url)
         response.raise_for_status()  # Raise an error for bad responses (4xx, 5xx)
         
         # Parse the page content using BeautifulSoup
         soup = BeautifulSoup(response.content, 'html.parser')
         
         # Extract role title and company name
-        role_title = soup.find('h1')
-        company_name = soup.find('h2')
+        role_title = soup.find('h2')
+        company_name = soup.find('a', class_="topcard__org-name-link")
 
         role_title = role_title.get_text(strip=True) if role_title else "N/A"
+        company_url = company_name.get('href').split("?")[0]
         company_name = company_name.get_text(strip=True) if company_name else "N/A"
 
         # Locate job description section
-        job_card = soup.find('div', class_='container py-lg')
-        if not job_card:
+        job_description = soup.find('div', class_='description__text')
+        if not job_description:
             raise ValueError("Job card container not found!")
         
-        # Split job and company details
-        role_and_company_details = job_card.find_all(lambda tag: tag.name == 'div' and 'col-12' in tag.get('class', []) and 'col-lg-6' in tag.get('class', []))
-        if len(role_and_company_details) < 2:
-            raise ValueError("Expected job and company details in separate sections.")
-
-        role_card = role_and_company_details[0]
-        company_card = role_and_company_details[1]
-
         # Extract role details        
-        role_information = role_card.find_all('div', recursive=False)
-        if len(role_information) > 1:
-            role_details = role_information[1].find_all('div', recursive=False)
-            role_skills = role_information[2]
+        role_information = job_description.find('div').get_text(strip=True)
 
-            role_summary = role_details[0].get_text(strip=True)
-            role_description = role_details[2].get_text()
+        '''        
+        # Get Company Information
+        response = requests.get(company_url)
 
-            skills_container = role_skills.find_all('div', recursive=False)[1]
-            skills_list = skills_container.find_all('div')
-            role_skills = []
-            for skill in skills_list:
-                role_skills.append(skill.get_text(strip=True))            
+        soup = BeautifulSoup(response.content, 'html.parser')
 
         # Extract company details
-        company_information = company_card.find_all('div', recursive=False)[4].find('div')
+        company_information = company_card.find_all('div', recursive=False)[4].find('div').find_all('p', recursive=False)
 
         if(len(company_information) > 1):
-            company_whatWeDo = company_information.find_all('p')[0].get_text(strip=True)
-            company_whyWorkWithUs = company_information.find_all('p')[1].get_text(strip=True)
+            company_whatWeDo = company_information[0].get_text(strip=True)
+        else:
+            company_whatWeDo = "Company Information not provided."
+        '''
 
         return {
             "Job Title": role_title,
             "Company Name": company_name,
-            "Job Summary": role_summary,
-            "Job Description": role_description,
-            "Job Skills": role_skills,
-            "Company Description": company_whatWeDo,
-            "Company Why Work With Us": company_whyWorkWithUs
+            "Job Description": role_information,
+            #"Company Description": company_whatWeDo,
+            #"Company Why Work With Us": company_whyWorkWithUs
         }
 
     except requests.exceptions.RequestException as e:
@@ -77,7 +66,7 @@ def scrape_job_application_data(url):
 
 
 
-def generate(job_title, company_name, job_summary, job_description, job_skills, company_description, company_whyWorkWithUs):
+def generate(job_title, company_name, job_description):
     resume_info = load_resume('./data_folder/plain_text_resume.yaml')
 
     name = resume_info.get('name', 'Ryan')
@@ -98,24 +87,27 @@ def generate(job_title, company_name, job_summary, job_description, job_skills, 
 
     I am currently applying for the {job_title} position at {company_name}, and I am seeking assistance with writing a compelling and personalized cover letter.
 
-    Please help me by using the following information to create a cover letter in first person written in a tone that expresses professionalism, conciseness, and integrity that is written by a human. Make sure to clearly state the connection between my resume information and the job description and details, as well as the company description.
+    First, please read through the job description and respond with a summary of the job description, job requirements, and technical/non-technical skills required.
+    
+    Second, please provide a brief summary of {company_name}'s culture and why I should work for them.
+    
+    Third, please help me by using the following information to create a cover letter in first person written in a tone that expresses professionalism, conciseness, and integrity that is written by a human. Make sure to clearly state the connection between my resume information and the job description, job skills, as well as the company's culture and values.
 
     Use the following information:
 
-    Company Description: "{company_description}"
-    Company Why Work With Us: "{company_whyWorkWithUs}"
-    Job Summary: "{job_summary}"
-    Job Description: "{job_description}"
-    Job Skills: "{job_skills}"
+    Company Description: the company description summary you generate
+    Company Why Work With Us: the company culture summary you generate
+    Job Description: {job_description}
+    Job Skills: the job requirements and skills you generate
 
-    My Full Name: {name} {surname}
-    My Current Job Position: {current_job_experience_position}
-    My Current Job Company: {current_job_experience_company}
-    My Job Key Responsibilities: {current_job_expeience_responsibilities}
-    My Job Skills Acquired: {list(current_job_experience_skills.keys())}
-    My Personal Projects: {projects}
-    My Certifications: {certifications}
-    My Interests: {interests}
+    My Full Name: "{name} {surname}:
+    My Current Job Position: "{current_job_experience_position}"
+    My Current Job Company: "{current_job_experience_company}"
+    My Job Key Responsibilities: "{current_job_expeience_responsibilities}"
+    My Job Skills Acquired: "{list(current_job_experience_skills.keys())}"
+    My Personal Projects: "{projects}"
+    My Certifications: "{certifications}"
+    My Interests: "{interests}"
 
     Additional instructions: The cover letter should be no more than 5 paragraphs, and between 350 to 400 words.
 
@@ -126,11 +118,16 @@ def generate(job_title, company_name, job_summary, job_description, job_skills, 
 
 def main():
     # Prompt the user for a URL
-    url = input("Please enter a valid BuiltIn.com Job Application URL: ")
+    url = input("Please enter a valid LinkedIn.com Job Application URL: ")
+
+    # Validate the URL format
+    if not url.startswith("https://www.linkedin.com/jobs/"):
+        print("Invalid LinkedIn.com URL format. Please make sure you are on the LinkedIn job's individual page.")
+        return
     
     # Call the scrape_data function with the user-provided URL
     job_information = scrape_job_application_data(url)
-    cover_letter_prompt = generate(job_title= job_information['Job Title'], company_name= job_information['Company Name'], job_summary= job_information['Job Summary'], job_description= job_information['Job Description'], job_skills= job_information['Job Skills'], company_description= job_information['Company Description'], company_whyWorkWithUs= job_information['Company Why Work With Us'])
+    cover_letter_prompt = generate(job_title= job_information['Job Title'], company_name= job_information['Company Name'], job_description= job_information['Job Description'])
 
     # Print the cover letter prompt
     print("Here is your cover letter prompt:")
