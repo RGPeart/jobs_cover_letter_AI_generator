@@ -95,10 +95,10 @@ def generate(job_title, company_name, job_description):
 
     Use the following information:
 
-    Company Description: the company description summary you generate
-    Company Why Work With Us: the company culture summary you generate
+    Company Description: the company description summary you generate from your research
+    Company Why Work With Us: the company culture summary you generate from your research
     Job Description: {job_description}
-    Job Skills: the job requirements and skills you generate
+    Job Skills: the job requirements and skills you generate from your research
 
     My Full Name: "{name} {surname}":
     My Current Job Position: "{current_job_experience_position}"
