@@ -87,10 +87,10 @@ def generate(job_title, company_name, job_description):
 
     I am currently applying for the {job_title} position at {company_name}, and I am seeking assistance with writing a compelling and personalized cover letter.
 
-    First, please read through the job description and respond with a summary of the job description, job requirements, and technical/non-technical skills required.
-    
-    Second, please provide a brief summary of {company_name}'s culture and why I should work for them.
-    
+    First, please perform some research and analysis on {company_name}. From your research, generate a brief summary of {company_name}'s company bio, culture, and why I should work for them.
+
+    Second, please read through the job description and respond with a summary of the job description, job requirements, and technical/non-technical skills required.
+        
     Third, please help me by using the following information to create a cover letter in first person written in a tone that expresses professionalism, conciseness, and integrity that is written by a human. Make sure to clearly state the connection between my resume information and the job description, job skills, as well as the company's culture and values.
 
     Use the following information:
@@ -100,7 +100,7 @@ def generate(job_title, company_name, job_description):
     Job Description: {job_description}
     Job Skills: the job requirements and skills you generate
 
-    My Full Name: "{name} {surname}:
+    My Full Name: "{name} {surname}":
     My Current Job Position: "{current_job_experience_position}"
     My Current Job Company: "{current_job_experience_company}"
     My Job Key Responsibilities: "{current_job_expeience_responsibilities}"
