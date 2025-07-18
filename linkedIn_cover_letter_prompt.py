@@ -109,7 +109,7 @@ def generate(job_title, company_name, job_description):
     My Certifications: "{certifications}"
     My Interests: "{interests}"
 
-    Additional instructions: The cover letter should be no more than 5 paragraphs, and between 350 to 400 words.
+    Additional instructions: The cover letter should be no more than 5 paragraphs, and between 375 to 425 words. Please do not use an Em Dashes either. 
 
     Thank you for your help in creating a cover letter. I appreciate your time and effort.
     """
