@@ -98,7 +98,12 @@ def generate(job_title, company_name, job_summary, job_description, job_skills, 
 
     I am currently applying for the {job_title} position at {company_name}, and I am seeking assistance with writing a compelling and personalized cover letter.
 
-    Please help me by using the following information to create a cover letter in first person written in a tone that expresses professionalism, conciseness, and integrity that is written by a human. Make sure to clearly state the connection between my resume information and the job description and details, as well as the company description.
+    First, please perform some research and analysis on {company_name}. From your research, generate a brief summary of {company_name}'s company bio, culture, and why I should work for them.
+
+    Second, please read through the job description and respond with a summary of the job description, job requirements, and technical/non-technical skills required.
+        
+    Third, please help me by using the following information to create a cover letter in first person written in a tone that expresses professionalism, conciseness, and integrity that is written by a human. Make sure to clearly state the connection between my resume information and the job description, job skills, as well as the company's culture and values.
+
 
     Use the following information:
 
@@ -117,7 +122,7 @@ def generate(job_title, company_name, job_summary, job_description, job_skills, 
     My Certifications: {certifications}
     My Interests: {interests}
 
-    Additional instructions: The cover letter should be no more than 5 paragraphs, and between 350 to 400 words.
+    Additional instructions: The cover letter should be no more than 5 paragraphs, and between 375 to 425 words. Please do not use any Em Dashes. 
 
     Thank you for your help in creating a cover letter. I appreciate your time and effort.
     """
